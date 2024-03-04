@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalkulacka bodu pro prijimacky na PFUK</title>
+    <title>PFUK Kalkulacka</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -93,7 +93,7 @@
                 if (isNaN(analyt) || isNaN(verbal) || isNaN(clovek) || isNaN(pravo) || isNaN(hospodarstvi) || 
                     analyt < 0 || analyt > 100 || verbal < 0 || verbal > 100 || clovek < 0 || clovek > 100 || 
                     pravo < 0 || pravo > 100 || hospodarstvi < 0 || hospodarstvi > 100) {
-                    alert('Tak si dement?!\n Zadej prosím korektní hodnoty pro OSP and ZSV (0 až 100).');
+                    alert('Tak si dement?!\n Zadej prosím korektní hodnoty pro oddíly OSP and ZSV (0 až 100).');
                     return;
                 }
 
@@ -125,17 +125,17 @@
             if (document.getElementById('inputFields').style.display === 'block') {
                 document.getElementById('result').innerHTML = 'OSP: ' + osp.toFixed(2) + '<br>' + 'ZSV: ' + zsv.toFixed(2) + '<br>' +
 								'<br>' + // Add a one-line space here
-								'Výsledný percentil: ' + scio.toFixed(2) + '<br>' +
+								'Výsledné body za percentil: ' + scio.toFixed(2) + '<br>' +
                                                                 '<br>' + // Add a one-line space here
-                                                                'Body pouze za C2: ' + c2.toFixed(2) + '<br>' +
+                                                                'Body +5 za Certifikát: ' + c2.toFixed(2) + '<br>' +
                                                                 '<br>' + // Add a one-line space here
-                                                                'Body za C2 a Vysvědčení: ' + bonif.toFixed(2);
+                                                                'Body +10 za Certifikát a Vysvědčení: ' + bonif.toFixed(2);
             } else {
-                document.getElementById('result').innerHTML = 'Výsledný percentil: ' + scio.toFixed(2) + '<br>' +
+                document.getElementById('result').innerHTML = 'Výsledné body za percentil: ' + scio.toFixed(2) + '<br>' +
                                                                 '<br>' + // Add a one-line space here
-                                                                'Body pouze za C2: ' + c2.toFixed(2) + '<br>' +
+                                                                'Body +5 za Certifikát: ' + c2.toFixed(2) + '<br>' +
                                                                 '<br>' + // Add a one-line space here
-                                                                'Body za C2 a Vysvědčení: ' + bonif.toFixed(2);
+                                                                'Body +10 za Certifikát a Vysvědčení: ' + bonif.toFixed(2);
             }
         }
     </script>
