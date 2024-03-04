@@ -21,13 +21,20 @@
             color: #fff;
             border: none;
             cursor: pointer;
-	    margin-top: 20px; /* Add margin-top for space */
+            margin-top: 20px;
         }
         #result {
-            margin-top: 20px; /* Add margin-top for space */
+            margin-top: 20px;
         }
 	h4 {
 		margin-bottom:0;
+		margin-top: 5px;
+	}
+	h3 {
+		margin-top: 5px;
+	}
+	h2 {
+		margin-bottom:10px;
 	}
     </style>
 </head>
@@ -39,14 +46,14 @@
     <div id="inputFields" style="display:none;">
         <h3>Zadej percentily jednotlivých oddílů OSP a ZSV</h3>
 	<h4>OSP</h4>
-        <label for="analyt">ANALYTICKÝ:</label>
+        <label for="analyt">ANALYT:</label>
         <input type="number" id="analyt" min="0" max="100" step="0.1" required><br>
-        <label for="verbal">VERBÁLNÍ:</label>
+        <label for="verbal">VERBAL:</label>
         <input type="number" id="verbal" min="0" max="100" step="0.1" required><br>
         <h4>ZSV</h4>
-	<label for="clovek">ČLOVĚK:</label>
+	<label for="clovek">CLOVEK:</label>
         <input type="number" id="clovek" min="0" max="100" step="0.1" required><br>
-        <label for="pravo">PRÁVO:</label>
+        <label for="pravo">PRAVO:</label>
         <input type="number" id="pravo" min="0" max="100" step="0.1" required><br>
         <label for="hospodarstvi">HOSPODÁŘSTVÍ:</label>
         <input type="number" id="hospodarstvi" min="0" max="100" step="0.1" required><br>
@@ -86,7 +93,7 @@
                 if (isNaN(analyt) || isNaN(verbal) || isNaN(clovek) || isNaN(pravo) || isNaN(hospodarstvi) || 
                     analyt < 0 || analyt > 100 || verbal < 0 || verbal > 100 || clovek < 0 || clovek > 100 || 
                     pravo < 0 || pravo > 100 || hospodarstvi < 0 || hospodarstvi > 100) {
-                    alert('Tak si dement?! \n Zadej prosím korektní hodnoty pro všechny oddíly (0 až 100).');
+                    alert('Tak si dement?!\n Zadej prosím korektní hodnoty pro OSP and ZSV (0 až 100).');
                     return;
                 }
 
@@ -100,7 +107,7 @@
 
                 // Check if OSP and ZSV are valid numbers
                 if (isNaN(osp) || isNaN(zsv) || osp < 0 || osp > 100 || zsv < 0 || zsv > 100) {
-                    alert('Tyvole, tak si dement?!\n Zadej prosím korektní hodnoty pro OSP and ZSV (0 až 100).');
+                    alert('Tak si dement?!\n Zadej prosím korektní hodnoty pro OSP and ZSV (0 až 100).');
                     return;
                 }
             }
@@ -115,11 +122,21 @@
             var bonif = c2 + 5;
 
             // Display results
-            document.getElementById('result').innerHTML = 'Výsledné body:' + scio.toFixed(2) + '<br>' +
-                                                             '<br>' + // Add a one-line space here
-                                                             'Body +5 za Certifikát: ' + c2.toFixed(2) + '<br>' +
-                                                             '<br>' + // Add a one-line space here
-                                                             'Body +10 za Certifikát a Vysvědčení: ' + bonif.toFixed(2);
+            if (document.getElementById('inputFields').style.display === 'block') {
+                document.getElementById('result').innerHTML = 'OSP: ' + osp.toFixed(2) + '<br>' + 'ZSV: ' + zsv.toFixed(2) + '<br>' +
+								'<br>' + // Add a one-line space here
+								'Výsledný percentil: ' + scio.toFixed(2) + '<br>' +
+                                                                '<br>' + // Add a one-line space here
+                                                                'Body pouze za C2: ' + c2.toFixed(2) + '<br>' +
+                                                                '<br>' + // Add a one-line space here
+                                                                'Body za C2 a Vysvědčení: ' + bonif.toFixed(2);
+            } else {
+                document.getElementById('result').innerHTML = 'Výsledný percentil: ' + scio.toFixed(2) + '<br>' +
+                                                                '<br>' + // Add a one-line space here
+                                                                'Body pouze za C2: ' + c2.toFixed(2) + '<br>' +
+                                                                '<br>' + // Add a one-line space here
+                                                                'Body za C2 a Vysvědčení: ' + bonif.toFixed(2);
+            }
         }
     </script>
 </body>
